@@ -2,6 +2,8 @@ package com.spring.TransactionManagement.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -11,6 +13,7 @@ import jakarta.persistence.Transient;
 public class Mobile {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "mobile_id")
 	private long mobileId;
 	@Column(name = "mobile_brand")
@@ -21,8 +24,9 @@ public class Mobile {
 	private long stock;
 
 	public Mobile() {
-		
+
 	}
+
 	public Mobile(long mobileId, String brand, String txnRefNo, long stock) {
 		this.mobileId = mobileId;
 		this.brand = brand;

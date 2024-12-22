@@ -15,33 +15,39 @@ public class MobileService {
 	private MobileRepo mobileRepo;
 
 	@Transactional
-	public Mobile addStocksInfo() throws Exception{
+	public Mobile addStocksInfo() throws Exception {
 		// TODO Auto-generated method stub
-		Mobile mobile=new Mobile();
-		
-		for (int i=1;i<10;i++) {
+		Mobile mobile = new Mobile();
+
+		for (int i = 1; i < 10; i++) {
 			mobile.setMobileId(i);
 			mobile.setBrand("Samsumg");
 			mobile.setStock(i);
-			
-			if(mobile.getMobileId()==7)
-				throw new RuntimeException("unchecked Exception-rollback of Transactions works fine by default in @Transactional");//rollback of data works for unchecked exceptions
-			
-			if(mobile.getStock()==5)
+
+			if (mobile.getMobileId() == 5)
+				throw new RuntimeException(
+						"unchecked Exception-rollback of Transactions works fine by default in @Transactional");// rollback
+																												// of
+																												// data
+																												// works
+																												// for
+																												// unchecked
+																												// exceptions
+
+			if (mobile.getStock() == 15)
 				throw new Exception("checked Exception- rollback od transactions doesn't work by default");
-			System.out.println("Inside Mobile" + mobile.getClass().getName());
+			// System.out.println("Inside Mobile," + mobile.getClass().getName());
 			try {
-				if(mobile.getStock()==3)
+				if (mobile.getStock() == 14)
 					throw new RuntimeException("Inside try catch block-RunTime Exception ");
-			mobileRepo.addStock(mobile);
-			
-		}
-			catch(Exception e){
-				System.out.println("Inside catch block, Some Error Occured"+e);
+				mobileRepo.addStock(mobile);
+
+			} catch (Exception e) {
+				System.out.println("Inside catch block, Some Error Occured" + e);
 			}
 		}
-		
+
 		return mobile;
-	
+
 	}
 }

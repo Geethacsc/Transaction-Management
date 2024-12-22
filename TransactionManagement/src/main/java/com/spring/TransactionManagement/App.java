@@ -3,7 +3,6 @@ package com.spring.TransactionManagement;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.spring.TransactionManagement.config.AppConfig;
-import com.spring.TransactionManagement.entity.Mobile;
 import com.spring.TransactionManagement.service.MobileService;
 
 public class App {
